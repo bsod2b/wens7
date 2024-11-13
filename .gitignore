@@ -1,0 +1,3 @@
+# ignore the large giganormous file
+yahboomcar_slam/params/ORBvoc.txt
+install/yahboomcar_slam/share/yahboomcar_slam/params/ORBvoc.txt
