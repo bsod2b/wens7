@@ -19,7 +19,7 @@ class HelloWorldNode(Node):
 
         while rclpy.ok():                          # Whether the ROS2 system is running normally
 
-            self.get_logger().info("Hello WENS")  # ROS2 log output
+            self.get_logger().info("Hallo Dunkelheit mein alter Freund")  # ROS2 log output
 
             time.sleep(0.5)                        # sleep control loop time
 
