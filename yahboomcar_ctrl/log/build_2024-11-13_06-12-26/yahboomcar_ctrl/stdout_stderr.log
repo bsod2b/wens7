@@ -1,0 +1,45 @@
+running egg_info
+creating build/yahboomcar_ctrl/yahboomcar_ctrl.egg-info
+writing build/yahboomcar_ctrl/yahboomcar_ctrl.egg-info/PKG-INFO
+writing dependency_links to build/yahboomcar_ctrl/yahboomcar_ctrl.egg-info/dependency_links.txt
+writing entry points to build/yahboomcar_ctrl/yahboomcar_ctrl.egg-info/entry_points.txt
+writing requirements to build/yahboomcar_ctrl/yahboomcar_ctrl.egg-info/requires.txt
+writing top-level names to build/yahboomcar_ctrl/yahboomcar_ctrl.egg-info/top_level.txt
+writing manifest file 'build/yahboomcar_ctrl/yahboomcar_ctrl.egg-info/SOURCES.txt'
+reading manifest file 'build/yahboomcar_ctrl/yahboomcar_ctrl.egg-info/SOURCES.txt'
+writing manifest file 'build/yahboomcar_ctrl/yahboomcar_ctrl.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/build/yahboomcar_ctrl/build
+creating /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/build/yahboomcar_ctrl/build/lib
+creating /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/build/yahboomcar_ctrl/build/lib/yahboomcar_ctrl
+copying yahboomcar_ctrl/__init__.py -> /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/build/yahboomcar_ctrl/build/lib/yahboomcar_ctrl
+copying yahboomcar_ctrl/yahboom_keyboard.py -> /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/build/yahboomcar_ctrl/build/lib/yahboomcar_ctrl
+copying yahboomcar_ctrl/yahboom_joy_R2.py -> /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/build/yahboomcar_ctrl/build/lib/yahboomcar_ctrl
+copying yahboomcar_ctrl/yahboom_joy_X3.py -> /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/build/yahboomcar_ctrl/build/lib/yahboomcar_ctrl
+running install
+running install_lib
+creating /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/lib/python3.8/site-packages/yahboomcar_ctrl
+copying /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/build/yahboomcar_ctrl/build/lib/yahboomcar_ctrl/__init__.py -> /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/lib/python3.8/site-packages/yahboomcar_ctrl
+copying /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/build/yahboomcar_ctrl/build/lib/yahboomcar_ctrl/yahboom_keyboard.py -> /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/lib/python3.8/site-packages/yahboomcar_ctrl
+copying /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/build/yahboomcar_ctrl/build/lib/yahboomcar_ctrl/yahboom_joy_R2.py -> /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/lib/python3.8/site-packages/yahboomcar_ctrl
+copying /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/build/yahboomcar_ctrl/build/lib/yahboomcar_ctrl/yahboom_joy_X3.py -> /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/lib/python3.8/site-packages/yahboomcar_ctrl
+byte-compiling /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/lib/python3.8/site-packages/yahboomcar_ctrl/__init__.py to __init__.cpython-38.pyc
+byte-compiling /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/lib/python3.8/site-packages/yahboomcar_ctrl/yahboom_keyboard.py to yahboom_keyboard.cpython-38.pyc
+byte-compiling /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/lib/python3.8/site-packages/yahboomcar_ctrl/yahboom_joy_R2.py to yahboom_joy_R2.cpython-38.pyc
+byte-compiling /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/lib/python3.8/site-packages/yahboomcar_ctrl/yahboom_joy_X3.py to yahboom_joy_X3.cpython-38.pyc
+running install_data
+creating /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/share/ament_index
+creating /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/share/ament_index/resource_index
+creating /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/share/ament_index/resource_index/packages
+copying resource/yahboomcar_ctrl -> /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/share/ament_index/resource_index/packages
+copying package.xml -> /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/share/yahboomcar_ctrl
+creating /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/share/yahboomcar_ctrl/launch
+copying launch/yahboomcar_joy_launch.py -> /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/share/yahboomcar_ctrl/launch
+running install_egg_info
+Copying build/yahboomcar_ctrl/yahboomcar_ctrl.egg-info to /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/lib/python3.8/site-packages/yahboomcar_ctrl-0.0.0-py3.8.egg-info
+running install_scripts
+Installing yahboom_joy_R2 script to /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/lib/yahboomcar_ctrl
+Installing yahboom_joy_X3 script to /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/lib/yahboomcar_ctrl
+Installing yahboom_keyboard script to /root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/install/yahboomcar_ctrl/lib/yahboomcar_ctrl
+writing list of installed files to '/root/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_ctrl/build/yahboomcar_ctrl/install.log'
