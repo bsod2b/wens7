@@ -73,7 +73,8 @@ class JoyTeleop(Node):
 		if joy_data.buttons[13] == 1:
 			if self.linear_Gear == 1.0: self.linear_Gear = 1.0 / 3
 			elif self.linear_Gear == 1.0 / 3: self.linear_Gear = 2.0 / 3
-			elif self.linear_Gear == 2.0 / 3: self.linear_Gear = 1
+			elif self.linear_Gear == 2.0 / 3: self.linear_Gear = 1.0 / 6
+			elif self.linear_Gear == 1.0 / 6: self.linear_Gear = 1
         # angular Gear control
 		if joy_data.buttons[14] == 1:
 			if self.angular_Gear == 1.0: self.angular_Gear = 1.0 / 4
