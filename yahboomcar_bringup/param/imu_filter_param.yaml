@@ -5,3 +5,5 @@ imu_filter_madgwick:
         publish_tf: false
         world_frame: "enu"
         orientation_stddev: 0.05
+        use_magnetic_field: false
+        madgwick_gain: 0.1
