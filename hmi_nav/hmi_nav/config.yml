@@ -1,0 +1,13 @@
+configs:
+  config1:
+    xData: 1.0
+    yData: 2.0
+    yaw: 0.5
+  config2:
+    xData: 3.0
+    yData: 4.0
+    yaw: 1.0
+  config3:
+    xData: 5.0
+    yData: 6.0
+    yaw: 1.5
