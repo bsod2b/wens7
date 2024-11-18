@@ -63,7 +63,7 @@ class HandDetector:
 
 if __name__ == '__main__':
     rospy.init_node('handDetector', anonymous=True)
-    capture = cv.VideoCapture(0)
+    capture = cv.VideoCapture(1)
     capture.set(6, cv.VideoWriter.fourcc('M', 'J', 'P', 'G'))
     capture.set(cv.CAP_PROP_FRAME_WIDTH, 640)
     capture.set(cv.CAP_PROP_FRAME_HEIGHT, 480)
