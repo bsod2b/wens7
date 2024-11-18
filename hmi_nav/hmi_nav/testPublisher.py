@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-from yahboomcar_msgs.msg import GoalData
+from yahboomcar_msgs.msg import Goal
 import yaml
 
 CONFIG_PATH = 'config.yaml'
@@ -8,7 +8,7 @@ CONFIG_PATH = 'config.yaml'
 class TestPublisher(Node):
     def __init__(self):
         super().__init__('test_publisher')
-        self.pub_new_goal = self.create_publisher(GoalData, 'nav/new_goal', 1)
+        self.pub_new_goal = self.create_publisher(Goal, 'nav/new_goal', 1)
 
         with open(CONFIG_PATH, 'r') as file:
             configs = yaml.safe_load(file)
@@ -28,7 +28,7 @@ class TestPublisher(Node):
             else:
                 self.get_logger().error(f"Config '{user_input}' not found in config.yaml")
 
-        msg = GoalData()
+        msg = Goal()
         msg.xData = self.config['xData']
         msg.yData = self.config['yData']
         msg.yaw = self.config['yaw']
