@@ -1,16 +1,21 @@
+import os
 import rclpy
 from rclpy.node import Node
 from yahboomcar_msgs.msg import Goal
+from ament_index_python.packages import get_package_share_directory
 import yaml
 
-CONFIG_PATH = 'share/hmi_nav/config.yml'
+CONFIG_PATH = 'config.yml'
+PACKAGE_NAME = 'hmi_nav'
 
 class TestPublisher(Node):
     def __init__(self):
         super().__init__('test_publisher')
         self.pub_new_goal = self.create_publisher(Goal, 'nav/new_goal', 1)
 
-        with open(CONFIG_PATH, 'r') as file:
+        package_share_directory = get_package_share_directory(PACKAGE_NAME)
+        absolute_config_path = os.path.join(package_share_directory, CONFIG_PATH)
+        with open(absolute_config_path, 'r') as file:
             configs = yaml.safe_load(file)
 
         valid_input = False
