@@ -68,7 +68,7 @@ def main():
     print("start it")
     rclpy.init()
     hand_detector = HandDetector('hand_detector')
-    capture = cv.VideoCapture(0)
+    capture = cv.VideoCapture(1)
     capture.set(6, cv.VideoWriter.fourcc('M', 'J', 'P', 'G'))
     capture.set(cv.CAP_PROP_FRAME_WIDTH, 640)
     capture.set(cv.CAP_PROP_FRAME_HEIGHT, 480)
