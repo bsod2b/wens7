@@ -1,3 +1,3 @@
-int32 xData
-int32 yData
+int32 x_data
+int32 y_data
 int32 yaw
