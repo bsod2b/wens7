@@ -4,16 +4,16 @@ from nav2_msgs.action import NavigateToPose
 from geometry_msgs.msg import PoseStamped
 from rclpy.action import ActionClient
 from rclpy.task import Future
-from yahboomcar_msgs.msg import GoalData
+from yahboomcar_msgs.msg import Goal
 
 class GoalSender(Node):
     def __init__(self):
         super().__init__('goal_sender')
         self.action_client = ActionClient(self, NavigateToPose, 'navigate_to_pose')
-        self.sub_newGoal = self.create_subscription(GoalData, "nav/new_goal", self.send_goal, 1)
+        self.sub_newGoal = self.create_subscription(Goal, "nav/new_goal", self.send_goal, 1)
 
     def send_goal(self, msg):
-        if not isinstance(msg, GoalData): return
+        if not isinstance(msg, Goal): return
 
         goal_msg = NavigateToPose.Goal()
         goal_msg.pose.header.frame_id = 'map'
