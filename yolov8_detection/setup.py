@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'object_detection = yoloov8_detection.object_detection:main',
+            'object_detection = yolov8_detection.object_detection:main',
         ],
     },
 )
