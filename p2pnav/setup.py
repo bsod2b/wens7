@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'send_goal	= p2pnav.send_goal:main',
         ],
     },
 )
