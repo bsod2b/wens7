@@ -3,7 +3,7 @@ from rclpy.node import Node
 from yahboomcar_msgs.msg import Goal
 import yaml
 
-CONFIG_PATH = './config.yml'
+CONFIG_PATH = 'config.yml'
 
 class TestPublisher(Node):
     def __init__(self):
