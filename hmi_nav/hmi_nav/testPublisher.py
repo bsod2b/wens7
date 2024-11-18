@@ -34,8 +34,8 @@ class TestPublisher(Node):
                 self.get_logger().error(f"Config '{user_input}' not found in config.yaml")
 
         msg = Goal()
-        msg.xData = self.config['x_data']
-        msg.yData = self.config['y_data']
+        msg.x_data = self.config['x_data']
+        msg.y_data = self.config['y_data']
         msg.yaw = self.config['yaw']
         self.pub_new_goal.publish(msg)
         self.get_logger().info(f'Publishing: x={msg.xData}, y={msg.yData}, yaw={msg.yaw}')

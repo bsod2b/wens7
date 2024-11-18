@@ -1,13 +1,13 @@
 configs:
   config1:
-    xData: 1.0
-    yData: 2.0
+    x_data: 1.0
+    y_data: 2.0
     yaw: 0.5
   config2:
-    xData: 3.0
-    yData: 4.0
+    x_data: 3.0
+    y_data: 4.0
     yaw: 1.0
   config3:
-    xData: 5.0
-    yData: 6.0
+    x_data: 5.0
+    y_data: 6.0
     yaw: 1.5
