@@ -6,6 +6,8 @@ from std_msgs.msg import Bool
 import cv2
 import mediapipe as mp
 
+buzzer = False
+
 class ObjectDetectionNode(Node):
     def __init__(self, name): 
         super().__init__(name)
@@ -34,12 +36,17 @@ class ObjectDetectionNode(Node):
                     self.mp_objectron.BOX_CONNECTIONS
                 )
                 self.get_logger().info('Shoe detected!')
-            buzzer_msg = Bool()
-            buzzer_msg.data = True
-            self.buzzer_pub.publish(buzzer_msg)
+            self.buzzer_callback()
+            self.create_timer(3.0, self.buzzer_callback)
 
             cv2.imshow('Object Detection', frame)
             cv2.waitKey(1)
+
+    def buzzer_callback(self):
+        buzzer_msg = Bool()
+        buzzer_msg.data = not buzzer
+        self.buzzer_pub.publish(buzzer_msg)
+        buzzer = not buzzer
 
 def main(args=None):
     rclpy.init(args=args)
