@@ -22,8 +22,7 @@ class ObjectDetectionNode(Node):
         )
         self.mp_drawing = mp.solutions.drawing_utils
 
-    def image_callback(self, msg):  
-        buzzer = False            
+    def image_callback(self, msg):              
         frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
@@ -37,12 +36,13 @@ class ObjectDetectionNode(Node):
                 )
                 self.get_logger().info('Shoe detected!')
             self.buzzer_callback()
-            self.create_timer(3.0, self.buzzer_callback(buzzer))
+            self.create_timer(3.0, self.buzzer_callback)
 
             cv2.imshow('Object Detection', frame)
             cv2.waitKey(1)
 
     def buzzer_callback(self):
+        buzzer = False
         buzzer_msg = Bool()
         buzzer_msg.data = not buzzer
         self.buzzer_pub.publish(buzzer_msg)
