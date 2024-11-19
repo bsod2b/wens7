@@ -6,12 +6,6 @@ from std_msgs.msg import Bool
 import cv2
 import mediapipe as mp
 
-BaseOptions = mp.tasks.BaseOptions
-DetectionResult = mp.tasks.components.containers.detections.DetectionResult
-ObjectDetector = mp.tasks.vision.ObjectDetector
-ObjectDetectorOptions = mp.tasks.vision.ObjectDetectorOptions
-VisionRunningMode = mp.tasks.vision.RunningMode
-
 class ObjectDetectionNode(Node):
     def __init__(self, name): 
         super().__init__(name)
@@ -27,30 +21,22 @@ class ObjectDetectionNode(Node):
         )
         self.mp_drawing = mp.solutions.drawing_utils
 
-    def image_callback(self, msg):        
-        # options = ObjectDetectorOptions(
-        #    base_options=BaseOptions(model_asset_path='/path/to/model.tflite'),
-        #    running_mode=VisionRunningMode.LIVE_STREAM,
-        #    max_results=5,
-        #    result_callback=callback,
-        #    category_allowlist=['backpack'])
-        # with ObjectDetector.create_from_options(options) as detector:
-                   
-            frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
-            rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    def image_callback(self, msg):                         
+        frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+        rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-            results = self.objectron.process(rgb_frame)
-            if results.detected_objects:
-                buzzer_msg = Bool()
-                buzzer_msg.data = True
-                self.buzzer_pub.publish(buzzer_msg)
-                for detected_object in results.detected_objects:
-                    self.mp_drawing.draw_landmarks(
-                        frame,
-                        detected_object.landmarks_2d,
-                        self.mp_objectron.BOX_CONNECTIONS
-                    )
-                    self.get_logger().info('Backpack detected!')
+        results = self.objectron.process(rgb_frame)
+        if results.detected_objects:
+            buzzer_msg = Bool()
+            buzzer_msg.data = True
+            self.buzzer_pub.publish(buzzer_msg)
+            for detected_object in results.detected_objects:
+                self.mp_drawing.draw_landmarks(
+                    frame,
+                    detected_object.landmarks_2d,
+                    self.mp_objectron.BOX_CONNECTIONS
+                )
+                self.get_logger().info('Backpack detected!')
 
 def main(args=None):
     rclpy.init(args=args)
