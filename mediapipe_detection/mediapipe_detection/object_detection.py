@@ -38,7 +38,7 @@ class ObjectDetectionNode(Node):
                 )
                 self.get_logger().info('Shoe detected!')
             self.publish_message(True)
-            self.create_timer(1.0, self.publish_false)
+            self.timer = self.create_timer(1.0, self.publish_false)
 
 
             cv2.imshow('Object Detection', frame)
@@ -51,6 +51,7 @@ class ObjectDetectionNode(Node):
 
     def publish_false(self):
         self.publish_message(False)
+        self.timer.cancel()
 
 
 def main(args=None):
