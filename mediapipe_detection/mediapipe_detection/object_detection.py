@@ -6,9 +6,8 @@ from std_msgs.msg import Bool
 import cv2
 import mediapipe as mp
 
-buzzer = False
-
 class ObjectDetectionNode(Node):
+
     def __init__(self, name): 
         super().__init__(name)
         self.bridge = CvBridge()
@@ -23,7 +22,8 @@ class ObjectDetectionNode(Node):
         )
         self.mp_drawing = mp.solutions.drawing_utils
 
-    def image_callback(self, msg):                         
+    def image_callback(self, msg):  
+        buzzer = False            
         frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
@@ -37,7 +37,7 @@ class ObjectDetectionNode(Node):
                 )
                 self.get_logger().info('Shoe detected!')
             self.buzzer_callback()
-            self.create_timer(3.0, self.buzzer_callback)
+            self.create_timer(3.0, self.buzzer_callback(buzzer))
 
             cv2.imshow('Object Detection', frame)
             cv2.waitKey(1)
