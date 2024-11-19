@@ -17,7 +17,7 @@ class ObjectDetectionNode(Node):
             static_image_mode=False,
             max_num_objects=1,
             min_detection_confidence=0.5,
-            model_name='Bag'
+            model_name='bottle'
         )
         self.mp_drawing = mp.solutions.drawing_utils
 
