@@ -38,7 +38,7 @@ class ObjectDetectionNode(Node):
             buzzer_msg.data = True
             self.buzzer_pub.publish(buzzer_msg)
 
-            cv2.show('Object Detection', frame)
+            cv2.imshow('Object Detection', frame)
             cv2.waitKey(1)
 
 def main(args=None):
