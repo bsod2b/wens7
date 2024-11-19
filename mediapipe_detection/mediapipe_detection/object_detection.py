@@ -27,12 +27,6 @@ class ObjectDetectionNode(Node):
 
         results = self.objectron.process(rgb_frame)
         if results.detected_objects:
-            buzzer_msg = Bool()
-            buzzer_msg.data = True
-            self.buzzer_pub.publish(buzzer_msg)
-
-            cv2.show('Object Detection', frame)
-            cv2.waitKey(1)
             for detected_object in results.detected_objects:
                 self.mp_drawing.draw_landmarks(
                     frame,
@@ -40,6 +34,12 @@ class ObjectDetectionNode(Node):
                     self.mp_objectron.BOX_CONNECTIONS
                 )
                 self.get_logger().info('Shoe detected!')
+            buzzer_msg = Bool()
+            buzzer_msg.data = True
+            self.buzzer_pub.publish(buzzer_msg)
+
+            cv2.show('Object Detection', frame)
+            cv2.waitKey(1)
 
 def main(args=None):
     rclpy.init(args=args)
