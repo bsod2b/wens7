@@ -11,7 +11,7 @@ class ObjectDetectionNode(Node):
         super().__init__(name)
         self.bridge = CvBridge()
         self.image_sub = self.create_subscription(Image, "/camera/color/image_raw", self.image_callback, 1)
-        self.buzzer_pub = self.create_publisher(Bool, "/buzzer", 10)
+        self.buzzer_pub = self.create_publisher(Bool, "Buzzer", 10)
         self.mp_objectron = mp.solutions.objectron
         self.objectron = self.mp_objectron.Objectron(
             static_image_mode=False,
