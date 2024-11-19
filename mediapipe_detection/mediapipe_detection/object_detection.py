@@ -37,16 +37,21 @@ class ObjectDetectionNode(Node):
                     self.mp_objectron.BOX_CONNECTIONS
                 )
                 self.get_logger().info('Shoe detected!')
-            self.buzzer_callback()
+            self.publish_message(True)
+            self.create_timer(1.0, self.publish_false)
+
 
             cv2.imshow('Object Detection', frame)
             cv2.waitKey(1)
 
-    def buzzer_callback(self):
-        self.create_timer(3.0, self.buzzer_pub.publish(Bool("data: False")))
-        buzzer_msg = Bool()
-        buzzer_msg.data = False
-        self.buzzer_pub.publish(buzzer_msg)
+    def publish_message(self, value):
+        msg = Bool()
+        msg.data = value
+        self.buzzer_pub.publish(msg)
+
+    def publish_false(self):
+        self.publish_message(False)
+
 
 def main(args=None):
     rclpy.init(args=args)
