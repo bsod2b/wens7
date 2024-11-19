@@ -30,13 +30,16 @@ class ObjectDetectionNode(Node):
             buzzer_msg = Bool()
             buzzer_msg.data = True
             self.buzzer_pub.publish(buzzer_msg)
+
+            cv2.show('Object Detection', frame)
+            cv2.waitKey(1)
             for detected_object in results.detected_objects:
                 self.mp_drawing.draw_landmarks(
                     frame,
                     detected_object.landmarks_2d,
                     self.mp_objectron.BOX_CONNECTIONS
                 )
-                self.get_logger().info('Backpack detected!')
+                self.get_logger().info('Shoe detected!')
 
 def main(args=None):
     rclpy.init(args=args)
