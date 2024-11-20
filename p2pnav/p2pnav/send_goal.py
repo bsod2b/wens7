@@ -19,8 +19,8 @@ class GoalSender(Node):
         goal_msg.pose.header.frame_id = 'map'
         goal_msg.pose.header.stamp = self.get_clock().now().to_msg()
 
-        goal_msg.pose.pose.position.x = msg.xData
-        goal_msg.pose.pose.position.y = msg.yData
+        goal_msg.pose.pose.position.x = msg.x_data
+        goal_msg.pose.pose.position.y = msg.y_data
         goal_msg.pose.pose.orientation.z = msg.yaw  # Use a quaternion here for real navigation
 
         self.action_client.wait_for_server()
