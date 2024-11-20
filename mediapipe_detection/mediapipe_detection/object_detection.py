@@ -25,7 +25,14 @@ class ObjectDetectionNode(Node):
         self.mp_drawing = mp.solutions.drawing_utils
         self.base_options = python.BaseOptions(model_asset_path= "PATH/TO/MODEL")
         # self.save_result might not work
-        self.options = vision.ObjectDetectorOptions(running_mode=vision.RunningMode.LIVE_STREAM, base_options=self.base_options, max_results=1, score_threshold=0.5, category_allowlist=["backpack"], result_callback=self.save_result)
+        self.options = vision.ObjectDetectorOptions(
+            running_mode=vision.RunningMode.LIVE_STREAM, 
+            base_options=self.base_options, 
+            max_results=1, 
+            score_threshold=0.5, 
+            category_allowlist=["backpack"], 
+            result_callback=self.save_result
+            )
         self.detector = vision.ObjectDetector.create_from_options(self.options)
         self.detection_result_list = []
         self.detection_frame = None 
