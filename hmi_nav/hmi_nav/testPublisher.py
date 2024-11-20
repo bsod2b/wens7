@@ -38,7 +38,7 @@ class TestPublisher(Node):
         msg.y_data = self.config['y_data']
         msg.yaw = self.config['yaw']
         self.pub_new_goal.publish(msg)
-        self.get_logger().info(f'Publishing: x={msg.xData}, y={msg.yData}, yaw={msg.yaw}')
+        self.get_logger().info(f'Publishing: x={msg.x_data}, y={msg.y_data}, yaw={msg.yaw}')
 
 def main(args=None):
     rclpy.init(args=args)
