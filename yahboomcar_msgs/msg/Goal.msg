@@ -1,3 +1,3 @@
-int32 x_data
-int32 y_data
-int32 yaw
+float64 x_data
+float64 y_data
+float64 yaw
