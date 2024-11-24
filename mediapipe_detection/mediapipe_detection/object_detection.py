@@ -36,7 +36,7 @@ class ObjectDetectionNode(Node):
             running_mode=vision.RunningMode.LIVE_STREAM, 
             base_options=self.base_options, 
             max_results=2, 
-            score_threshold=0.2, 
+            score_threshold=0.3, 
             category_allowlist=["backpack"], 
             result_callback=self.save_result
             )
