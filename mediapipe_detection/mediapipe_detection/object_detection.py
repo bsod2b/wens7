@@ -63,12 +63,11 @@ class ObjectDetectionNode(Node):
         if self.detection_result_list: 
             vis_frame = self.visualize(current_frame, self.detection_result_list[0])
             self.get_logger().info('Backpack detected!')
-            self.publish_message(True)
-            self.timer = self.create_timer(1.0, self.publish_false)
+            # self.publish_message(True)
+            # self.timer = self.create_timer(1.0, self.publish_false)
             cv2.imshow('Object Detection', vis_frame)
+            cv2.waitKey(1)
             self.detection_result_list.clear()
-        else:
-            cv2.imshow('Object Detection', current_frame)
 
     def publish_message(self, value):
         msg = Bool()
