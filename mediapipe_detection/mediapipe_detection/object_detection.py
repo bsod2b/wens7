@@ -45,8 +45,9 @@ class ObjectDetectionNode(Node):
     
     def save_result(self, result, output_image, result_timestamp):
         self.get_logger().info('Running inference...')
-        result.timestamp = result_timestamp
-        self.detection_result_list.append(result)
+        if result.detections:
+            result.timestamp = result_timestamp
+            self.detection_result_list.append(result)
 
     def image_callback(self, msg):           
         frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
@@ -61,8 +62,6 @@ class ObjectDetectionNode(Node):
 
         if self.detection_result_list:
             self.get_logger().info(str(len(self.detection_result_list)))
-            self.get_logger().info(str(len(self.detection_result_list.detections)))
-            self.get_logger().info(str(len(self.detection_result_list.detection[0].categories)))
             self.get_logger().info(self.detection_result_list[0].detections[0].categories[0].category_name)
             vis_frame = self.visualize(current_frame, self.detection_result_list[0])
             self.get_logger().info('Backpack detected!')
