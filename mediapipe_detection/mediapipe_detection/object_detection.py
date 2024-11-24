@@ -16,6 +16,7 @@ from std_msgs.msg import Bool
 class ObjectDetectionNode(Node):
 
     buzzer = False 
+    timestamp = 0
 
     # Reference: https://github.com/google-ai-edge/mediapipe-samples/blob/main/examples/object_detection/raspberry_pi/detect.py
     def __init__(self, name): 
@@ -53,7 +54,8 @@ class ObjectDetectionNode(Node):
         resized_rgb_frame = cv2.resize(rgb_frame, (320, 320))
         mp_rgb_frame = mp.Image(image_format=mp.ImageFormat.SRGB, data=resized_rgb_frame)
 
-        self.detector.detect_async(mp_rgb_frame, time.time_ns())
+        self.detector.detect_async(mp_rgb_frame, self.timestamp)
+        self.timestamp += 1
 
         if self.detection_result_list: 
             current_frame = self.visualize(current_frame, self.detection_result_list[0])
