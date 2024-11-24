@@ -36,8 +36,8 @@ class ObjectDetectionNode(Node):
             running_mode=vision.RunningMode.LIVE_STREAM, 
             base_options=self.base_options, 
             max_results=2, 
-            score_threshold=0.4, 
-            category_allowlist=["person", "backpack"], 
+            score_threshold=0.2, 
+            category_allowlist=["backpack"], 
             result_callback=self.save_result
             )
         self.detector = vision.ObjectDetector.create_from_options(self.options)
