@@ -17,7 +17,7 @@ class AstraRGBImage(Node):
 		frame = self.bridge.imgmsg_to_cv2(msg, "bgr8")
 		# 规范输入图像大小
 		# Standardize the input image size
-		frame = cv.resize(frame, (640, 480))
+		frame = cv.resize(frame, (320, 320))
 		# opencv mat ->  ros msg
 		msg = self.bridge.cv2_to_imgmsg(frame, "bgr8")
 		cv.imshow("color_image", frame)
