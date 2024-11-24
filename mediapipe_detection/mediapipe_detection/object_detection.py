@@ -45,8 +45,9 @@ class ObjectDetectionNode(Node):
         self.detection_result_list = []
         self.detection_frame = None 
     
-    def save_result(self, result):
-        self.get_logger().info('save result')
+    def save_result(self, result, output_image, result_timestamp):
+        self.get_logger().info('Saving result...')
+        result.timestamp = result_timestamp
         self.detection_result_list.append(result)
 
     def image_callback(self, msg):            
