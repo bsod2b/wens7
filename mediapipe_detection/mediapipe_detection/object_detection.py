@@ -38,7 +38,7 @@ class ObjectDetectionNode(Node):
             base_options=self.base_options, 
             max_results=1, 
             score_threshold=0.3, 
-            category_allowlist=["backpack"], 
+            category_allowlist=["person", "backpack"], 
             result_callback=self.save_result
             )
         self.detector = vision.ObjectDetector.create_from_options(self.options)
