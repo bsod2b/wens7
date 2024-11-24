@@ -61,6 +61,8 @@ class ObjectDetectionNode(Node):
 
         if self.detection_result_list:
             self.get_logger().info(str(len(self.detection_result_list)))
+            self.get_logger().info(str(len(self.detection_result_list.detections)))
+            self.get_logger().info(str(len(self.detection_result_list.detection[0].categories)))
             self.get_logger().info(self.detection_result_list[0].detections[0].categories[0].category_name)
             vis_frame = self.visualize(current_frame, self.detection_result_list[0])
             self.get_logger().info('Backpack detected!')
