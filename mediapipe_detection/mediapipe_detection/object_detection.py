@@ -27,7 +27,7 @@ class ObjectDetectionNode(Node):
         self.mp_drawing = mp.solutions.drawing_utils
 
         package_share_directory = get_package_share_directory('mediapipe_detection')
-        model_path = os.path.join(package_share_directory, "models/efficientdet_lite0.tflite")
+        model_path = os.path.join(package_share_directory, "models/efficientdet.tflite")
         if not os.path.exists(model_path):
             raise FileNotFoundError(f"Model file not found at {model_path}")
         self.base_options = python.BaseOptions(model_asset_path=model_path)
