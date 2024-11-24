@@ -35,8 +35,8 @@ class ObjectDetectionNode(Node):
         self.options = vision.ObjectDetectorOptions(
             running_mode=vision.RunningMode.LIVE_STREAM, 
             base_options=self.base_options, 
-            max_results=1, 
-            score_threshold=0.5, 
+            max_results=2, 
+            score_threshold=0.4, 
             category_allowlist=["person", "backpack"], 
             result_callback=self.save_result
             )
@@ -48,8 +48,7 @@ class ObjectDetectionNode(Node):
         result.timestamp = result_timestamp
         self.detection_result_list.append(result)
 
-    def image_callback(self, msg):
-        self.get_logger().info('Detecting...')            
+    def image_callback(self, msg):           
         frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         # resized_rgb_frame = cv2.resize(rgb_frame, (320, 320))
