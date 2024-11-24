@@ -60,7 +60,7 @@ class ObjectDetectionNode(Node):
         current_frame = cv2.cvtColor(current_frame, cv2.COLOR_RGB2BGR)
 
         if self.detection_result_list:
-            self.get_logger().info(self.detection_result_list[0])
+            self.get_logger().info(len(self.detection_result_list))
             vis_frame = self.visualize(current_frame, self.detection_result_list[0])
             self.get_logger().info('Backpack detected!')
             # self.publish_message(True)
