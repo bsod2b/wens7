@@ -81,6 +81,7 @@ class ObjectDetectionNode(Node):
 
     # Reference: https://github.com/google-ai-edge/mediapipe-samples/blob/main/examples/object_detection/python/object_detector_live_stream/utils.py
     def visualize(
+        self,
         image,
         detection_result
     ) -> np.ndarray:
