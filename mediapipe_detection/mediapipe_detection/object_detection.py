@@ -1,13 +1,17 @@
-import rclpy
-from rclpy.node import Node   
-from sensor_msgs.msg import Image
-from cv_bridge import CvBridge
-from std_msgs.msg import Bool
+import os
+import time
+
 import cv2
 import mediapipe as mp
-import time
+import rclpy
+from ament_index_python.packages import get_package_share_directory
+from cv_bridge import CvBridge
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
+from rclpy.node import Node
+from sensor_msgs.msg import Image
+from std_msgs.msg import Bool
+
 from utils import visualize
 
 class ObjectDetectionNode(Node):
@@ -20,10 +24,11 @@ class ObjectDetectionNode(Node):
         self.bridge = CvBridge()
         self.image_sub = self.create_subscription(Image, "/camera/color/image_raw", self.image_callback, 1)
         self.buzzer_pub = self.create_publisher(Bool, "Buzzer", 1)
-        # TODO: Download alternative pretrained model
         # Only Objectron is contained within mp lib        
         self.mp_drawing = mp.solutions.drawing_utils
-        self.base_options = python.BaseOptions(model_asset_path= "PATH/TO/MODEL")
+
+        package_share_directory = get_package_share_directory('mediapipe_detection')
+        self.base_options = python.BaseOptions(model_asset_path= os.path.join(package_share_directory, "models/efficientdet.tflite"))
         # self.save_result might not work
         self.options = vision.ObjectDetectorOptions(
             running_mode=vision.RunningMode.LIVE_STREAM, 
@@ -43,7 +48,8 @@ class ObjectDetectionNode(Node):
     def image_callback(self, msg):            
         frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        mp_rgb_frame = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb_frame)
+        resized_rgb_frame = cv2.resize(rgb_frame, (640, 480))
+        mp_rgb_frame = mp.Image(image_format=mp.ImageFormat.SRGB, data=resized_rgb_frame)
 
         self.detector.detect_async(mp_rgb_frame, time.time_ns())
 
