@@ -23,8 +23,7 @@ class ObjectDetectionNode(Node):
         super().__init__(name)
         self.bridge = CvBridge()
         self.image_sub = self.create_subscription(Image, "/camera/color/image_raw", self.image_callback, 1)
-        self.buzzer_pub = self.create_publisher(Bool, "Buzzer", 1)
-        # Only Objectron is contained within mp lib        
+        self.buzzer_pub = self.create_publisher(Bool, "Buzzer", 1)       
         self.mp_drawing = mp.solutions.drawing_utils
 
         package_share_directory = get_package_share_directory('mediapipe_detection')
@@ -32,45 +31,44 @@ class ObjectDetectionNode(Node):
         if not os.path.exists(model_path):
             raise FileNotFoundError(f"Model file not found at {model_path}")
         self.base_options = python.BaseOptions(model_asset_path=model_path)
-        # self.save_result might not work
+
         self.options = vision.ObjectDetectorOptions(
             running_mode=vision.RunningMode.LIVE_STREAM, 
             base_options=self.base_options, 
             max_results=1, 
-            score_threshold=0.3, 
+            score_threshold=0.5, 
             category_allowlist=["person", "backpack"], 
             result_callback=self.save_result
             )
         self.detector = vision.ObjectDetector.create_from_options(self.options)
         self.detection_result_list = []
-        self.detection_frame = None 
     
     def save_result(self, result, output_image, result_timestamp):
         self.get_logger().info('Saving result...')
         result.timestamp = result_timestamp
         self.detection_result_list.append(result)
 
-    def image_callback(self, msg):            
+    def image_callback(self, msg):
+        self.get_logger().info('Detecting...')            
         frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         # resized_rgb_frame = cv2.resize(rgb_frame, (320, 320))
         mp_rgb_frame = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb_frame)
 
-        self.get_logger().info('Detecting...')
         self.detector.detect_async(mp_rgb_frame, self.timestamp)
         self.timestamp += 1
+        current_frame = mp_rgb_frame.numpy_view()
+        current_frame = cv2.cvtColor(current_frame, cv2.COLOR_RGB2BGR)
 
         if self.detection_result_list: 
-            current_frame = self.visualize(current_frame, self.detection_result_list[0])
-            self.detection_frame = current_frame
+            vis_frame = self.visualize(current_frame, self.detection_result_list[0])
             self.get_logger().info('Backpack detected!')
             self.publish_message(True)
             self.timer = self.create_timer(1.0, self.publish_false)
+            cv2.imshow('Object Detection', vis_frame)
             self.detection_result_list.clear()
-        
-        if self.detection_frame is not None:
-            cv2.imshow('Object Detection', frame)
-            cv2.waitKey(1)
+        else:
+            cv2.imshow('Object Detection', current_frame)
 
     def publish_message(self, value):
         msg = Bool()
