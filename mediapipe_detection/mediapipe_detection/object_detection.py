@@ -53,7 +53,7 @@ class ObjectDetectionNode(Node):
         frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         # resized_rgb_frame = cv2.resize(rgb_frame, (320, 320))
-        mp_rgb_frame = mp.Image(image_format=mp.ImageFormat.SRGB, data=resized_rgb_frame)
+        mp_rgb_frame = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb_frame)
 
         self.detector.detect_async(mp_rgb_frame, self.timestamp)
         self.timestamp += 1
