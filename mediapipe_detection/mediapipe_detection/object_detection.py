@@ -37,7 +37,7 @@ class ObjectDetectionNode(Node):
             running_mode=vision.RunningMode.LIVE_STREAM, 
             base_options=self.base_options, 
             max_results=1, 
-            score_threshold=0.5, 
+            score_threshold=0.3, 
             category_allowlist=["backpack"], 
             result_callback=self.save_result
             )
@@ -46,12 +46,13 @@ class ObjectDetectionNode(Node):
         self.detection_frame = None 
     
     def save_result(self, result):
+        self.get_logger().info('save result')
         self.detection_result_list.append(result)
 
     def image_callback(self, msg):            
         frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        resized_rgb_frame = cv2.resize(rgb_frame, (320, 320))
+        # resized_rgb_frame = cv2.resize(rgb_frame, (320, 320))
         mp_rgb_frame = mp.Image(image_format=mp.ImageFormat.SRGB, data=resized_rgb_frame)
 
         self.detector.detect_async(mp_rgb_frame, self.timestamp)
@@ -60,7 +61,7 @@ class ObjectDetectionNode(Node):
         if self.detection_result_list: 
             current_frame = self.visualize(current_frame, self.detection_result_list[0])
             self.detection_frame = current_frame
-            self.get_logger().info('Shoe detected!')
+            self.get_logger().info('Backpack detected!')
             self.publish_message(True)
             self.timer = self.create_timer(1.0, self.publish_false)
             self.detection_result_list.clear()
