@@ -55,6 +55,7 @@ class ObjectDetectionNode(Node):
         # resized_rgb_frame = cv2.resize(rgb_frame, (320, 320))
         mp_rgb_frame = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb_frame)
 
+        self.get_logger().info('Detecting...')
         self.detector.detect_async(mp_rgb_frame, self.timestamp)
         self.timestamp += 1
 
