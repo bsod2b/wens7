@@ -11,3 +11,7 @@ configs:
     x_data: 5.0
     y_data: 6.0
     yaw: 1.5
+  config4:
+    x_data: 1.0
+    y_data: -1.0
+    yaw: 0
