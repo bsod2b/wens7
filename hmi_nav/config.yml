@@ -14,4 +14,4 @@ configs:
   config4:
     x_data: 1.0
     y_data: -1.0
-    yaw: 0
+    yaw: 0.0
