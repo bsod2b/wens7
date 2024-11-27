@@ -1,16 +1,16 @@
 configs:
+  zero:
+    x_data: 0.0
+    y_data: 0.0
+    yaw: 0.0
   config1:
+    x_data: 0.5
+    y_data: 1.0
+    yaw: 0.5
+  config2:
     x_data: 1.0
     y_data: 2.0
     yaw: 0.5
-  config2:
-    x_data: 3.0
-    y_data: 4.0
-    yaw: 1.0
-  config3:
-    x_data: 5.0
-    y_data: 6.0
-    yaw: 1.5
   config4:
     x_data: 1.0
     y_data: -1.0
