@@ -1,5 +1,11 @@
 amcl:
   ros__parameters:
+    set_initial_pose: true
+    initial_pose:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      yaw: 0.0
     use_sim_time: False
     alpha1: 0.2
     alpha2: 0.2
@@ -130,6 +136,10 @@ controller_server:
       acc_lim_x: 2.5
       # TODO: tune/lower acc_lim_theta, might affect steering
       acc_lim_theta: 3.2
+      weight_kinematics_forward_drive: 1000 #1000
+      weight_kinematics_turning_radius: 1 #1 #only for car-like robots
+      # TODO: tune dt_ref
+      # dt_ref: 0.4
 
 costmap_converter:
   ros__parameters:
