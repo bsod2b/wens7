@@ -22,6 +22,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(nav2_msgs REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Goal.msg"
   "msg/ImageMsg.msg"
@@ -29,7 +30,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Position.msg"
   "msg/Target.msg"
   "msg/TargetArray.msg"
-  DEPENDENCIES geometry_msgs std_msgs
+  DEPENDENCIES geometry_msgs std_msgs nav2_msgs
 )
 
 if(BUILD_TESTING)
