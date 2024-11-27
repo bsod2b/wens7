@@ -10,9 +10,14 @@ def generate_launch_description():
 
     return LaunchDescription([
         # Chassis bringup
-        Node(
-            package='yahboomcar_bringup',
-            executable='Ackman_driver_R2',
+        TimerAction(
+            period=0.0,
+            actions=[
+            Node(
+                package='yahboomcar_bringup',
+                executable='Ackman_driver_R2',
+            )
+            ]
         ),
         # Delay before starting Lidar launch with Cartographer
         TimerAction(
