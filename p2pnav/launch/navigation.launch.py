@@ -9,19 +9,9 @@ def generate_launch_description():
     nav_package_launch_path = os.path.join(get_package_share_directory('yahboomcar_nav'), 'launch')
 
     return LaunchDescription([
-        # Chassis bringup
-        TimerAction(
-            period=0.0,
-            actions=[
-            Node(
-                package='yahboomcar_bringup',
-                executable='Ackman_driver_R2',
-            )
-            ]
-        ),
         # Delay before starting Lidar launch with Cartographer
         TimerAction(
-            period=20.0,
+            period=0.0,
             actions=[
                 IncludeLaunchDescription(PythonLaunchDescriptionSource(
                     [nav_package_launch_path, '/map_cartographer_launch.py'])
@@ -30,7 +20,7 @@ def generate_launch_description():
         ),
         # Delay before starting TEB navigation
         TimerAction(
-            period=40.0,
+            period=10.0,
             actions=[
                 IncludeLaunchDescription(PythonLaunchDescriptionSource(
                     [nav_package_launch_path, '/navigation_teb_launch.py'])
@@ -39,7 +29,7 @@ def generate_launch_description():
         ),
         # Delay before starting HMI listener and goal publisher
         TimerAction(
-            period=60.0,
+            period=12.0,
             actions=[
                 Node(
                     package='p2pnav',
