@@ -16,7 +16,7 @@ def generate_launch_description():
         ),
         # Delay before starting Lidar launch with Cartographer
         TimerAction(
-            period=5.0,
+            period=20.0,
             actions=[
                 IncludeLaunchDescription(PythonLaunchDescriptionSource(
                     [nav_package_launch_path, '/map_cartographer_launch.py'])
@@ -25,7 +25,7 @@ def generate_launch_description():
         ),
         # Delay before starting TEB navigation
         TimerAction(
-            period=10.0,
+            period=40.0,
             actions=[
                 IncludeLaunchDescription(PythonLaunchDescriptionSource(
                     [nav_package_launch_path, '/navigation_teb_launch.py'])
@@ -34,7 +34,7 @@ def generate_launch_description():
         ),
         # Delay before starting HMI listener and goal publisher
         TimerAction(
-            period=15.0,
+            period=60.0,
             actions=[
                 Node(
                     package='p2pnav',
