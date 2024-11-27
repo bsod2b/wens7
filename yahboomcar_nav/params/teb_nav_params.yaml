@@ -136,7 +136,7 @@ controller_server:
       acc_lim_x: 2.5
       # TODO: tune/lower acc_lim_theta, might affect steering
       acc_lim_theta: 3.2
-      weight_kinematics_forward_drive: 700.0 #1000
+      weight_kinematics_forward_drive: 300.0 #1000
       weight_kinematics_turning_radius: 1.0 #1 #only for car-like robots
       # TODO: tune dt_ref
       # dt_ref: 0.4
