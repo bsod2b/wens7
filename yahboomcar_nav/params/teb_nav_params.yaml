@@ -108,7 +108,9 @@ controller_server:
       plugin: "teb_local_planner::TebLocalPlannerROS"
       footprint_model.type: circular
       footprint_model.radius: 0.1
+      # TODO: tune/decrease min_obstacle_dist
       min_obstacle_dist: 0.1
+      # TODO: tune/decrease inflation_dist
       inflation_dist: 0.1
       costmap_converter_plugin: "costmap_converter::CostmapToPolygonsDBSMCCH"
       costmap_converter_spin_thread: True
@@ -122,8 +124,11 @@ controller_server:
       max_global_plan_lookahead_dist: 1.0
       visualize_hc_graph: True
       max_vel_x: 0.26
+      # TODO: tune/lower max_vel_theta, might affect steering
       max_vel_theta: 1.0
+      # TODO: tune/increase acc_lim_x
       acc_lim_x: 2.5
+      # TODO: tune/lower acc_lim_theta, might affect steering
       acc_lim_theta: 3.2
 
 costmap_converter:
