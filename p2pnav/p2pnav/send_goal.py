@@ -1,9 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from nav2_msgs.action import NavigateToPose
-from geometry_msgs.msg import PoseStamped
 from rclpy.action import ActionClient
-from rclpy.task import Future
 from yahboomcar_msgs.msg import Goal
 
 class GoalSender(Node):
