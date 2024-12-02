@@ -27,6 +27,7 @@ setup(
     entry_points={
         'console_scripts': [
             'scan_filter = yahboomcar_nav.scan_filter:main'
+            'zigzag = yahboomcar_nav.zigzag:main'
         ],
     },
 )

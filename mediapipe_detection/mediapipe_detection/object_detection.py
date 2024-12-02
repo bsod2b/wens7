@@ -23,7 +23,8 @@ class ObjectDetectionNode(Node):
         super().__init__(name)
         self.bridge = CvBridge()
         self.image_sub = self.create_subscription(Image, "/camera/color/image_raw", self.image_callback, 1)
-        self.buzzer_pub = self.create_publisher(Bool, "Buzzer", 1)       
+        self.buzzer_pub = self.create_publisher(Bool, "Buzzer", 1)      
+        self.image_pub = self.create_publisher(Bool, "/camera/object_detection", 1)     
         self.mp_drawing = mp.solutions.drawing_utils
 
         package_share_directory = get_package_share_directory('mediapipe_detection')
@@ -67,6 +68,9 @@ class ObjectDetectionNode(Node):
             self.get_logger().info('Backpack detected!')
             # self.publish_message(True)
             # self.timer = self.create_timer(1.0, self.publish_false)
+            msg = Bool()
+            msg.data = True
+            self.image_pub.publish(msg)
             cv2.imshow('Object Detection', vis_frame)
             cv2.waitKey(1)
             self.detection_result_list.clear()
