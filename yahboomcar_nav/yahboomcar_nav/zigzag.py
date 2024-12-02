@@ -15,7 +15,6 @@ class SystematicDriver(Node):
         self.obstacle_detected = False
         self.turning = False
         self.turn_step = 0
-        self.shift_step = 0
 
     def lidar_callback(self, scan_msg):
         # Check for obstacles within 0.5 meters in front
@@ -29,25 +28,25 @@ class SystematicDriver(Node):
         msg.angular.z = 0.0
         self.cmd_vel_pub.publish(msg)
 
-
     def drive(self):
         msg = Twist()
 
         if self.turning:
             # Turn 90 degrees
+            self.get_logger().info('Turning...')
             msg.angular.z = 0.5
             self.turn_step += 1
             if self.turn_step > 20:  # Example turning duration
                 self.turning = False
                 self.turn_step = 0
-                self.shift_step = 0
         elif self.obstacle_detected:
             # Obstacle detected: stop and initiate a turn
-            msg.linear.x = 0.0
+            msg.linear.x = 0.1
+            msg.linear.y = 0.1
             self.turning = True
         else:
-            msg.linear.x = 0.2  # Move forward
-            self.shift_step += 1
+            msg.linear.x = 0.6  # Move forward
+            msg.linear.y = 0.6   
 
         self.cmd_vel_pub.publish(msg)
 
