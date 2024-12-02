@@ -27,6 +27,8 @@ class SystematicDriver(Node):
         msg.linear.x = 0.0
         msg.angular.z = 0.0
         self.cmd_vel_pub.publish(msg)
+        self.destroy_node()
+        rclpy.shutdown()
 
     def drive(self):
         msg = Twist()
