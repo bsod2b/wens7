@@ -26,7 +26,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'scan_filter = yahboomcar_nav.scan_filter:main'
+            'scan_filter = yahboomcar_nav.scan_filter:main',
             'zigzag = yahboomcar_nav.zigzag:main'
         ],
     },
