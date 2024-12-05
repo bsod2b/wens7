@@ -19,7 +19,7 @@ class SystematicDriver(Node):
     def lidar_callback(self, scan_msg):
         # Check for obstacles within 0.5 meters in front
         front_distances = scan_msg.ranges[0:30] + scan_msg.ranges[-30:]
-        self.obstacle_detected = any(d < 0.5 for d in front_distances if d > 0)
+        self.obstacle_detected = any(d < 0.7 for d in front_distances if d > 0)
 
     def image_callback(self, msg):
         self.timer.destroy()
@@ -36,7 +36,7 @@ class SystematicDriver(Node):
         if self.turning:
             # Turn 90 degrees
             self.get_logger().info('Turning...')
-            msg.angular.z = 0.5
+            msg.angular.z = 0.3
             self.turn_step += 1
             if self.turn_step > 20:  # Example turning duration
                 self.turning = False
@@ -47,8 +47,8 @@ class SystematicDriver(Node):
             msg.linear.y = 0.1
             self.turning = True
         else:
-            msg.linear.x = 0.6  # Move forward
-            msg.linear.y = 0.6   
+            msg.linear.x = 0.3  # Move forward
+            msg.linear.y = 0.3   
 
         self.cmd_vel_pub.publish(msg)
 
