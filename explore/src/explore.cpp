@@ -111,7 +111,6 @@ Explore::Explore()
     geometry_msgs::msg::TransformStamped transformStamped;
     std::string map_frame = costmap_client_.getGlobalFrameID();
     RCLCPP_INFO(logger_, "map frame: %s", map_frame.c_str());
-    RCLCPP_INFO(logger_, "robot base frame: %s", robot_base_frame_.c_str());
     try {
       transformStamped = tf_buffer_.lookupTransform(
           map_frame, robot_base_frame_, tf2::TimePointZero);
@@ -246,7 +245,7 @@ void Explore::makePlan()
   auto pose = costmap_client_.getRobotPose();
   // get frontiers sorted according to cost
   auto frontiers = search_.searchFrom(pose.position);
-  RCLCPP_DEBUG(logger_, "found %lu frontiers", frontiers.size());
+  RCLCPP_INFO(logger_, "found %lu frontiers", frontiers.size());
   for (size_t i = 0; i < frontiers.size(); ++i) {
     RCLCPP_DEBUG(logger_, "frontier %zd cost: %f", i, frontiers[i].cost);
   }
