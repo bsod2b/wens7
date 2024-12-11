@@ -5,7 +5,6 @@ options = {
   map_builder = MAP_BUILDER,
   trajectory_builder = TRAJECTORY_BUILDER,
   map_frame = "map",
-  publish_period_sec = 1.0,
   tracking_frame = "base_footprint",
   published_frame = "base_footprint",
   odom_frame = "odom",
