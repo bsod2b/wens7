@@ -151,7 +151,7 @@ void Costmap2DClient::updateFullMap(
   double origin_x = msg->info.origin.position.x;
   double origin_y = msg->info.origin.position.y;
 
-  RCLCPP_DEBUG(node_.get_logger(), "received full new map, resizing to: %d, %d",
+  RCLCPP_INFO(node_.get_logger(), "received full new map, resizing to: %d, %d",
                size_in_cells_x, size_in_cells_y);
   costmap_.resizeMap(size_in_cells_x, size_in_cells_y, resolution, origin_x,
                      origin_y);
@@ -163,23 +163,23 @@ void Costmap2DClient::updateFullMap(
   // fill map with data
   unsigned char* costmap_data = costmap_.getCharMap();
   size_t costmap_size = costmap_.getSizeInCellsX() * costmap_.getSizeInCellsY();
-  RCLCPP_DEBUG(node_.get_logger(), "full map update, %lu values", costmap_size);
+  RCLCPP_INFO(node_.get_logger(), "full map update, %lu values", costmap_size);
   for (size_t i = 0; i < costmap_size && i < msg->data.size(); ++i) {
     unsigned char cell_cost = static_cast<unsigned char>(msg->data[i]);
     costmap_data[i] = cost_translation_table__[cell_cost];
   }
-  RCLCPP_DEBUG(node_.get_logger(), "map updated, written %lu values",
+  RCLCPP_INFO(node_.get_logger(), "map updated, written %lu values",
                costmap_size);
 }
 
 void Costmap2DClient::updatePartialMap(
     const map_msgs::msg::OccupancyGridUpdate::SharedPtr msg)
 {
-  RCLCPP_DEBUG(node_.get_logger(), "received partial map update");
+  RCLCPP_INFO(node_.get_logger(), "received partial map update");
   global_frame_ = msg->header.frame_id;
 
   if (msg->x < 0 || msg->y < 0) {
-    RCLCPP_DEBUG(node_.get_logger(),
+    RCLCPP_INFO(node_.get_logger(),
                  "negative coordinates, invalid update. x: %d, y: %d", msg->x,
                  msg->y);
     return;
