@@ -165,7 +165,7 @@ void Explore::visualizeFrontiers(
   green.b = 0;
   green.a = 1.0;
 
-  RCLCPP_DEBUG(logger_, "visualising %lu frontiers", frontiers.size());
+  RCLCPP_INFO(logger_, "visualising %lu frontiers", frontiers.size());
   visualization_msgs::msg::MarkerArray markers_msg;
   std::vector<visualization_msgs::msg::Marker>& markers = markers_msg.markers;
   visualization_msgs::msg::Marker m;
@@ -286,7 +286,7 @@ void Explore::makePlan()
   if ((this->now() - last_progress_ >
       tf2::durationFromSec(progress_timeout_)) && !resuming_) {
     frontier_blacklist_.push_back(target_position);
-    RCLCPP_DEBUG(logger_, "Adding current goal to black list");
+    RCLCPP_INFO(logger_, "Adding current goal to black list");
     makePlan();
     return;
   }
@@ -301,7 +301,7 @@ void Explore::makePlan()
     return;
   }
 
-  RCLCPP_DEBUG(logger_, "Sending goal to move base nav2");
+  RCLCPP_INFO(logger_, "Sending goal to move base nav2");
 
   // send goal to move_base if we have something new to pursue
   auto goal = nav2_msgs::action::NavigateToPose::Goal();
@@ -360,17 +360,17 @@ void Explore::reachedGoal(const NavigationGoalHandle::WrappedResult& result,
 {
   switch (result.code) {
     case rclcpp_action::ResultCode::SUCCEEDED:
-      RCLCPP_DEBUG(logger_, "Goal was successful");
+      RCLCPP_INFO(logger_, "Goal was successful");
       break;
     case rclcpp_action::ResultCode::ABORTED:
-      RCLCPP_DEBUG(logger_, "Goal was aborted");
+      RCLCPP_INFO(logger_, "Goal was aborted");
       frontier_blacklist_.push_back(frontier_goal);
-      RCLCPP_DEBUG(logger_, "Adding current goal to black list");
+      RCLCPP_INFO(logger_, "Adding current goal to black list");
       // If it was aborted probably because we've found another frontier goal,
       // so just return and don't make plan again
       return;
     case rclcpp_action::ResultCode::CANCELED:
-      RCLCPP_DEBUG(logger_, "Goal was canceled");
+      RCLCPP_INFO(logger_, "Goal was canceled");
       // If goal canceled might be because exploration stopped from topic. Don't make new plan.
       return;
     default:
