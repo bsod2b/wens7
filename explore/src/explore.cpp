@@ -110,9 +110,12 @@ Explore::Explore()
     RCLCPP_INFO(logger_, "Getting initial pose of the robot");
     geometry_msgs::msg::TransformStamped transformStamped;
     std::string map_frame = costmap_client_.getGlobalFrameID();
+    RCLCPP_INFO(logger_, "map frame: %s", map_frame.c_str());
+    RCLCPP_INFO(logger_, "robot base frame: %s", robot_base_frame_.c_str());
     try {
       transformStamped = tf_buffer_.lookupTransform(
           map_frame, robot_base_frame_, tf2::TimePointZero);
+      RCLCPP_INFO(logger_, "Initial pose found");
       initial_pose_.position.x = transformStamped.transform.translation.x;
       initial_pose_.position.y = transformStamped.transform.translation.y;
       initial_pose_.orientation = transformStamped.transform.rotation;
@@ -238,6 +241,7 @@ void Explore::visualizeFrontiers(
 
 void Explore::makePlan()
 {
+  RCLCPP_INFO(logger_, "Making plan");
   // find frontiers
   auto pose = costmap_client_.getRobotPose();
   // get frontiers sorted according to cost
