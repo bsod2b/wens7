@@ -121,10 +121,11 @@ controller_server:
       max_samples: 20
       max_global_plan_lookahead_dist: 1.0
       visualize_hc_graph: True
-      max_vel_x: 0.26
-      max_vel_theta: 1.0
-      acc_lim_x: 2.5
-      acc_lim_theta: 3.2
+      max_vel_x: 0.1
+      max_vel_theta: 0.5
+      acc_lim_x: 1.5
+      acc_lim_theta: 1.0
+      weight_kinematics_forward_drive: 5.0
 
 costmap_converter:
   ros__parameters:
