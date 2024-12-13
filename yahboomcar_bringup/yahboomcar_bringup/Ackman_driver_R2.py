@@ -124,6 +124,11 @@ class yahboomcar_driver(Node):
 		battery.data = self.car.get_battery_voltage()*1.0
 		ax, ay, az = self.car.get_accelerometer_data()
 		# self.get_logger().info("ax = {}, ay = {}, az = {} ".format(ax,ay,az))
+
+		# means accelerometer data is invalid -> az always needs to be around 9.81
+		if az == 0.0:
+			return
+		
 		gx, gy, gz = self.car.get_gyroscope_data()
 		# self.get_logger().info("gx = {}, gy = {}, gz = {} ".format(gx,gy,gz))
 		mx, my, mz = self.car.get_magnetometer_data()
@@ -140,7 +145,7 @@ class yahboomcar_driver(Node):
 		imu.header.frame_id = self.imu_link
 		imu.linear_acceleration.x = ax*1.0
 		imu.linear_acceleration.y = ay*1.0
-		imu.linear_acceleration.z = az*1.0
+		imu.linear_acceleration.z = az*0.96
 		imu.angular_velocity.x = gx*1.0
 		imu.angular_velocity.y = gy*1.0
 		imu.angular_velocity.z = gz*1.0
