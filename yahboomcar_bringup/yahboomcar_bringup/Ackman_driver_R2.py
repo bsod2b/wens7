@@ -143,6 +143,10 @@ class yahboomcar_driver(Node):
 		# Publish gyroscope data
 		imu.header.stamp = time_stamp.to_msg()
 		imu.header.frame_id = self.imu_link
+		if ax > -0.2 or ax < 0.2:
+			ax = 0.0
+		if ay > -0.2 or ay < 0.2:
+			ay = 0.0
 		imu.linear_acceleration.x = ax*1.0
 		imu.linear_acceleration.y = ay*1.0
 		imu.linear_acceleration.z = az*0.96
