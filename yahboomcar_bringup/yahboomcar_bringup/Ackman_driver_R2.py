@@ -68,7 +68,14 @@ class yahboomcar_driver(Node):
 		self.magPublisher = self.create_publisher(MagneticField,"imu/mag",100)
 
 		#create timer
-		self.timer = self.create_timer(0.1, self.pub_data)
+		self.pub_frequency = 0.1
+		self.timer = self.create_timer(self.pub_frequency, self.pub_data)
+
+		#init wheel position
+		self.back_right_position = 0.0
+		self.back_left_position = 0.0
+		self.front_right_position = 0.0
+		self.front_left_position = 0.0
 
 		#create and init variable
 		self.edition = Float32()
@@ -150,6 +157,12 @@ class yahboomcar_driver(Node):
 		imu.linear_acceleration.x = ax*1.0
 		imu.linear_acceleration.y = ay*1.0
 		imu.linear_acceleration.z = az*0.96
+		if gx > -0.008 or gx < 0.008:
+			gx = 0.0
+		if gy > -0.008 or gy < 0.008:
+			gy = 0.0
+		if gz > -0.008 or gz < 0.008:
+			gz = 0.0
 		imu.angular_velocity.x = gx*1.0
 		imu.angular_velocity.y = gy*1.0
 		imu.angular_velocity.z = gz*1.0
@@ -177,13 +190,19 @@ class yahboomcar_driver(Node):
 		self.magPublisher.publish(mag)
 		self.volPublisher.publish(battery)
 		self.EdiPublisher.publish(edition)
+
+		wheel_radius = 0.069
+
+		self.back_right_position += (vx * self.pub_frequency) / wheel_radius
+		self.back_left_position += (vx * self.pub_frequency) / wheel_radius
+		self.front_right_position += (vx * self.pub_frequency) / wheel_radius
+		self.front_left_position += (vx * self.pub_frequency) / wheel_radius
 		
 		#turn to radis
 		steer_radis = vy*1000.0*3.1416/180.0
 		state.position = [0.0, 0.0, steer_radis, 0.0, steer_radis, 0.0]
-		if not vx == angular == 0:
-			i = random.uniform(-3.14, 3.14)
-			state.position = [i, i, steer_radis, i, steer_radis, i]
+		state.position = [self.back_right_position, self.back_left_position, steer_radis, 
+					self.front_left_position, steer_radis, self.front_right_position]
 		self.staPublisher.publish(state)
 			
 def main():
