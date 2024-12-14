@@ -58,6 +58,7 @@ bt_navigator:
     - nav2_compute_path_to_pose_action_bt_node
     - nav2_follow_path_action_bt_node
     - nav2_back_up_action_bt_node
+    - nav2_spin_action_bt_node
     - nav2_wait_action_bt_node
     - nav2_clear_costmap_service_bt_node
     - nav2_is_stuck_condition_bt_node
@@ -302,11 +303,13 @@ recoveries_server:
     costmap_topic: local_costmap/costmap_raw
     footprint_topic: local_costmap/published_footprint
     cycle_frequency: 10.0
-    recovery_plugins: ["backup", "wait"]
+    recovery_plugins: ["backup", "wait", "spin"]
     backup:
       plugin: "nav2_recoveries/BackUp"
     wait:
       plugin: "nav2_recoveries/Wait"
+    spin:
+      plugin: "nav2_recoveries/Spin"
     global_frame: odom
     robot_base_frame: base_footprint
     transform_timeout: 0.1
