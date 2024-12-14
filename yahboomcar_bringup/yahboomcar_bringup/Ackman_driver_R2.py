@@ -191,18 +191,17 @@ class yahboomcar_driver(Node):
 		self.volPublisher.publish(battery)
 		self.EdiPublisher.publish(edition)
 
-		wheel_radius = 0.069
-
-		self.back_right_position += (vx * self.pub_frequency) / wheel_radius
-		self.back_left_position += (vx * self.pub_frequency) / wheel_radius
-		self.front_right_position += (vx * self.pub_frequency) / wheel_radius
-		self.front_left_position += (vx * self.pub_frequency) / wheel_radius
+		# wheel_radius = 0.069
+		# vself.back_right_position += (vx * self.pub_frequency) / wheel_radius
+		# self.back_left_position += (vx * self.pub_frequency) / wheel_radius
+		# self.front_right_position += (vx * self.pub_frequency) / wheel_radius
+		# self.front_left_position += (vx * self.pub_frequency) / wheel_radius
 		
 		#turn to radis
 		steer_radis = vy*1000.0*3.1416/180.0
 		state.position = [0.0, 0.0, steer_radis, 0.0, steer_radis, 0.0]
-		state.position = [self.back_right_position, self.back_left_position, steer_radis, 
-					self.front_left_position, steer_radis, self.front_right_position]
+		#state.position = [self.back_right_position, self.back_left_position, steer_radis, 
+		#			self.front_left_position, steer_radis, self.front_right_position]
 		self.staPublisher.publish(state)
 			
 def main():
