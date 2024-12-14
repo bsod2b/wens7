@@ -108,7 +108,7 @@ controller_server:
       footprint_model.type: line  # Set to line to better match the shape of an Ackermann robot
       footprint_model.line_start: [0.1, 0.0]
       footprint_model.line_end: [-0.1, 0.0]  
-      min_obstacle_dist: 0.15
+      min_obstacle_dist: 0.18
       inflation_dist: 0.4
       costmap_converter_plugin: "costmap_converter::CostmapToPolygonsDBSMCCH"
       costmap_converter_spin_thread: True
