@@ -106,8 +106,8 @@ controller_server:
     FollowPath:
       plugin: "teb_local_planner::TebLocalPlannerROS"
       footprint_model.type: line  # Set to line to better match the shape of an Ackermann robot
-      line_start: [0.1, 0.0]
-      line_end: [-0.1, 0.0]  
+      footprint_model.line_start: [0.1, 0.0]
+      footprint_model.line_end: [-0.1, 0.0]  
       min_obstacle_dist: 0.15
       inflation_dist: 0.4
       costmap_converter_plugin: "costmap_converter::CostmapToPolygonsDBSMCCH"
