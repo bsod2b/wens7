@@ -132,7 +132,7 @@ controller_server:
       weight_optimaltime: 2.0  # Reduced to focus on path feasibility
       weight_viapoint: 30.0
       weight_obstacle: 20.0  # Reduced to reflect slower maneuvering of Ackermann vehicles
-      weight_kinematics_turning_radius: 50.0  # Increased to strongly penalize sharp turns
+      weight_kinematics_turning_radius: 10.0  # Increased to strongly penalize sharp turns
       weight_kinematics_forward_drive: 20.0
 
 costmap_converter:
