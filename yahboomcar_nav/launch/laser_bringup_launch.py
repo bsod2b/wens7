@@ -64,8 +64,8 @@ def generate_launch_description():
         bringup_x3_launch,
         bringup_r2_launch,
         rplidar_type_arg,
-        lidar_a1_launch,
-        lidar_s2_launch,
-        lidar_4ROS_launch,
+        #lidar_a1_launch,
+        #lidar_s2_launch,
+        #lidar_4ROS_launch,
         tf_base_link_to_laser
     ])
