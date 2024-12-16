@@ -1,4 +1,3 @@
-# TODO: vim into default bt recov file and change from spin to backup
 amcl:
   ros__parameters:
     use_sim_time: False
@@ -55,7 +54,7 @@ bt_navigator:
     robot_base_frame: base_footprint
     odom_topic: /odom
     # default_bt_xml_filename: $(find-pkg-share yahboomcar_nav)/yahboomcar_nav/params/behavior_tree.xml
-    default_bt_xml_filename: navigate_w_replanning_and_recovery.xml
+    default_bt_xml_filename: $(find-pkg-share yahboomcar_nav)/yahboomcar_nav/params/behavior_tree.xml
     plugin_lib_names:
     - nav2_compute_path_to_pose_action_bt_node
     - nav2_follow_path_action_bt_node
