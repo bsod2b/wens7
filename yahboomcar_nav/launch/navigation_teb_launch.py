@@ -17,6 +17,8 @@ def generate_launch_description():
         'map', default=os.path.join(package_path, 'maps', 'yahboomcar.yaml'))
     nav2_param_path = LaunchConfiguration('params_file', default=os.path.join(
         package_path, 'params', 'teb_nav_params.yaml'))
+    bt_xml_path = LaunchConfiguration('bt_xml_file', default=os.path.join(
+        package_path, 'params', 'behavior_tree.xml'))
     
 
     # Define all the nodes to be launched
@@ -91,7 +93,7 @@ def generate_launch_description():
             executable='bt_navigator',
             name='bt_navigator',
             output='screen',
-            parameters=[LaunchConfiguration('params_file'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+            parameters=[LaunchConfiguration('params_file'), {'use_sim_time': LaunchConfiguration('use_sim_time')}, {'default_bt_xml_filename': LaunchConfiguration('bt_xml_file')}]
         ),
 
         # Waypoint Follower
@@ -135,7 +137,8 @@ def generate_launch_description():
     # Return the LaunchDescription object
     return LaunchDescription([
         use_sim_time,
-        map_yaml_path   ,
+        map_yaml_path,
         nav2_param_path,
+        bt_xml_path,
         *nodes_to_launch
     ])
