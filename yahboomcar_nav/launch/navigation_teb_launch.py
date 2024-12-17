@@ -48,7 +48,7 @@ def generate_launch_description():
             executable='amcl',
             name='amcl',
             output='screen',
-            parameters=[LaunchConfiguration('params_file'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
         ),
 
         # Controller server
@@ -57,7 +57,7 @@ def generate_launch_description():
             executable='controller_server',
             name='controller_server',
             output='screen',
-            parameters=[LaunchConfiguration('params_file'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
         ),
 
         # Planner server
@@ -66,7 +66,7 @@ def generate_launch_description():
             executable='planner_server',
             name='planner_server',
             output='screen',
-            parameters=[LaunchConfiguration('params_file'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
         ),
 
         # Recovery server
@@ -75,7 +75,7 @@ def generate_launch_description():
             executable='recoveries_server',
             name='recoveries_server',
             output='screen',
-            parameters=[LaunchConfiguration('params_file'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
         ),
 
         # Costmap converter
@@ -84,7 +84,7 @@ def generate_launch_description():
             executable='costmap_converter',
             name='costmap_converter',
             output='screen',
-            parameters=[LaunchConfiguration('params_file'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
         ),
 
         # Global costmap
@@ -93,7 +93,7 @@ def generate_launch_description():
             executable='global_costmap',
             name='global_costmap',
             output='screen',
-            parameters=[LaunchConfiguration('params_file'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
         ),
 
         # Local costmap
@@ -102,7 +102,7 @@ def generate_launch_description():
             executable='local_costmap',
             name='local_costmap',
             output='screen',
-            parameters=[LaunchConfiguration('params_file'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
         ),
 
         # BT Navigator
@@ -111,9 +111,9 @@ def generate_launch_description():
             executable='bt_navigator',
             name='bt_navigator',
             output='screen',
-            parameters=[LaunchConfiguration('params_file'), 
-                        {'use_sim_time': LaunchConfiguration('use_sim_time')}, 
-                        {'default_bt_xml_filename': LaunchConfiguration('bt_xml_file')}]
+            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, 
+                        {'default_bt_xml_filename': LaunchConfiguration('bt_xml_file')},
+                        LaunchConfiguration('params_file')]
         ),
 
         # Waypoint Follower
@@ -122,7 +122,7 @@ def generate_launch_description():
             executable='waypoint_follower',
             name='waypoint_follower',
             output='screen',
-            parameters=[LaunchConfiguration('params_file'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
         ),
 
         # Map Server
@@ -131,9 +131,9 @@ def generate_launch_description():
             executable='map_server',
             name='map_server',
             output='screen',
-            parameters=[LaunchConfiguration('params_file'), 
-                        {'use_sim_time': LaunchConfiguration('use_sim_time')}, 
-                        {'yaml_filename': LaunchConfiguration('map')}]
+            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, 
+                        {'yaml_filename': LaunchConfiguration('map')},
+                        LaunchConfiguration('params_file')]
         ),
 
         # Map Saver
@@ -142,7 +142,7 @@ def generate_launch_description():
             executable='map_saver',
             name='map_saver',
             output='screen',
-            parameters=[LaunchConfiguration('params_file'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
         ),
 
         # Robot State Publisher
@@ -151,6 +151,6 @@ def generate_launch_description():
             executable='robot_state_publisher',
             name='robot_state_publisher',
             output='screen',
-            parameters=[LaunchConfiguration('params_file'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
         )
     ])
