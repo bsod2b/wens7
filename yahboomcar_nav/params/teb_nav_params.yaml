@@ -53,8 +53,11 @@ bt_navigator:
     global_frame: map
     robot_base_frame: base_footprint
     odom_topic: /odom
-    default_bt_xml_filename: /yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_nav/share/yahboomcar_nav/params/navigate_w_replanning_and_recovery.xml
+    default_bt_xml_filename: /root/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_nav/share/yahboomcar_nav/params/navigate_w_replanning_and_recovery.xml
     always_reload_bt_xml: True
+    navigators: ['navigate_to_pose']
+    navigate_to_pose:
+      plugin: "nav2_bt_navigator/NavigateToPoseNavigator" 
     plugin_lib_names:
       - nav2_compute_path_to_pose_action_bt_node
       - nav2_follow_path_action_bt_node
