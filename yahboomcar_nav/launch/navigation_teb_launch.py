@@ -28,10 +28,6 @@ def generate_launch_description():
     
     # Return the LaunchDescription object
     return LaunchDescription([
-        use_sim_time,
-        map_yaml_path,
-        nav2_param_path,
-        bt_xml_path,
          # AMCL node
         Node(
             package='nav2_amcl',
