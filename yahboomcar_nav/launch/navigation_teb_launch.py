@@ -78,33 +78,6 @@ def generate_launch_description():
             parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
         ),
 
-        # Costmap converter
-        # Node(
-        #    package='costmap_converter',
-        #    executable='costmap_converter',
-        #    name='costmap_converter',
-        #    output='screen',
-        #    parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
-        #),
-
-        # Global costmap
-        Node(
-            package='nav2_costmap_2d',
-            executable='global_costmap',
-            name='global_costmap',
-            output='screen',
-            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
-        ),
-
-        # Local costmap
-        Node(
-            package='nav2_costmap_2d',
-            executable='local_costmap',
-            name='local_costmap',
-            output='screen',
-            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
-        ),
-
         # BT Navigator
         Node(
             package='nav2_bt_navigator',
