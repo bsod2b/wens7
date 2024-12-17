@@ -54,9 +54,7 @@ def generate_launch_description():
                                         'planner_server', 
                                         'recoveries_server', 
                                         'bt_navigator', 
-                                        'waypoint_follower', 
                                         'map_server', 
-                                        'map_saver', 
                                         'amcl']}]
         ),
         # AMCL node
