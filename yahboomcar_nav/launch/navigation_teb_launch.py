@@ -48,7 +48,7 @@ def generate_launch_description():
             executable='lifecycle_manager',
             name='lifecycle_manager_navigation',
             output='screen',
-            parameters={      
+            parameters=[{      
                 'autostart': True,
                 'use_sim_time': LaunchConfiguration('use_sim_time'),
                 'node_names': ['controller_server', 
@@ -57,7 +57,8 @@ def generate_launch_description():
                                         'bt_navigator', 
                                         'waypoint_follower', 
                                         'map_server', 
-                                        'amcl']}.items(),
+                                        'amcl']
+            }],
         ),
         # AMCL node
         Node(
