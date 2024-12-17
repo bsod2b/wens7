@@ -53,9 +53,9 @@ def generate_launch_description():
                 'use_sim_time': LaunchConfiguration('use_sim_time'),
                 'node_names': ['planner_server', 
                                 'recoveries_server', 
-                                'bt_navigator',
                                 'map_server', 
-                                'amcl']
+                                'amcl',
+                                'bt_navigator',]
             }],
         ),
         # AMCL node
