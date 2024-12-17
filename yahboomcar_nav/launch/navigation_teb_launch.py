@@ -10,6 +10,7 @@ from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 def generate_launch_description():
     # Get the package path
     package_path = get_package_share_directory('yahboomcar_nav')
+    description_package_path = get_package_share_directory('yahboomcar_description')
 
     # Declare launch arguments
     declare_use_sim_time_arg = DeclareLaunchArgument(
@@ -36,11 +37,19 @@ def generate_launch_description():
         description='Path to the behavior tree file for bt_navigator'
     )
 
+    declare_robot_urdf_path_arg = DeclareLaunchArgument(
+        'robot_description', 
+        default_value=PathJoinSubstitution([description_package_path, 'urdf', 'yahboomcar_R2.urdf.xacro']),
+        description='Path to the behavior tree file for bt_navigator'
+    )
+
+
     return LaunchDescription([
         declare_use_sim_time_arg,
         declare_map_yaml_arg,
         declare_nav2_param_path_arg,
         declare_bt_xml_path_arg,
+        declare_robot_urdf_path_arg,
         
         # AMCL node
         Node(
@@ -115,6 +124,8 @@ def generate_launch_description():
             executable='robot_state_publisher',
             name='robot_state_publisher',
             output='screen',
-            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
+            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')},
+                        {'robot_description': LaunchConfiguration('robot_description')},
+                        LaunchConfiguration('params_file')]
         )
     ])
