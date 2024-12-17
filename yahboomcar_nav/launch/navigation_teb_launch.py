@@ -43,22 +43,15 @@ def generate_launch_description():
         declare_nav2_param_path_arg,
         declare_bt_xml_path_arg,
         
+        # Controller server
         Node(
-            package='nav2_lifecycle_manager',
-            executable='lifecycle_manager',
-            name='lifecycle_manager_navigation',
+            package='nav2_controller',
+            executable='controller_server',
+            name='controller_server',
             output='screen',
-            parameters=[{      
-                'autostart': True,
-                'use_sim_time': LaunchConfiguration('use_sim_time'),
-                'node_names': [ 'controller_server',
-                                'planner_server', 
-                                'recoveries_server', 
-                                'map_server', 
-                                'amcl',
-                                'bt_navigator',]
-            }],
+            parameters=[LaunchConfiguration('params_file')]
         ),
+
         # AMCL node
         Node(
             package='nav2_amcl',
@@ -113,5 +106,22 @@ def generate_launch_description():
             output='screen',
             parameters=[LaunchConfiguration('params_file'),
                         {'yaml_filename': LaunchConfiguration('map')},]
+        ),
+
+        Node(
+            package='nav2_lifecycle_manager',
+            executable='lifecycle_manager',
+            name='lifecycle_manager_navigation',
+            output='screen',
+            parameters=[{      
+                'autostart': True,
+                'use_sim_time': LaunchConfiguration('use_sim_time'),
+                'node_names': [ 'controller_server',
+                                'planner_server', 
+                                'recoveries_server', 
+                                'map_server', 
+                                'amcl',
+                                'bt_navigator',]
+            }],
         ),
     ])
