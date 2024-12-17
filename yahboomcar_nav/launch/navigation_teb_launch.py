@@ -37,19 +37,17 @@ def generate_launch_description():
         description='Path to the behavior tree file for bt_navigator'
     )
 
-    declare_robot_urdf_path_arg = DeclareLaunchArgument(
-        'robot_description', 
-        default_value=PathJoinSubstitution([description_package_path, 'urdf', 'yahboomcar_R2.urdf.xacro']),
-        description='Path to the behavior tree file for bt_navigator'
-    )
+    urdf_file_path = PathJoinSubstitution([description_package_path, 'urdf', 'yahboomcar_R2.urdf.xacro'])
 
+    # Load URDF contents as a string
+    with open(urdf_file_path.perform(None), 'r') as urdf_file:
+        robot_description_content = urdf_file.read()
 
     return LaunchDescription([
         declare_use_sim_time_arg,
         declare_map_yaml_arg,
         declare_nav2_param_path_arg,
         declare_bt_xml_path_arg,
-        declare_robot_urdf_path_arg,
         
         # AMCL node
         Node(
@@ -125,7 +123,7 @@ def generate_launch_description():
             name='robot_state_publisher',
             output='screen',
             parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')},
-                        {'robot_description': LaunchConfiguration('robot_description')},
+                        {'robot_description': robot_description_content},
                         LaunchConfiguration('params_file')]
         )
     ])
