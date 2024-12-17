@@ -66,7 +66,7 @@ def generate_launch_description():
             executable='amcl',
             name='amcl',
             output='screen',
-            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
+            parameters=[LaunchConfiguration('params_file')]
         ),
 
         # Controller server
@@ -75,7 +75,7 @@ def generate_launch_description():
             executable='controller_server',
             name='controller_server',
             output='screen',
-            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
+            parameters=[LaunchConfiguration('params_file')]
         ),
 
         # Planner server
@@ -84,7 +84,7 @@ def generate_launch_description():
             executable='planner_server',
             name='planner_server',
             output='screen',
-            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
+            parameters=[LaunchConfiguration('params_file')]
         ),
 
         # Recovery server
@@ -93,7 +93,7 @@ def generate_launch_description():
             executable='recoveries_server',
             name='recoveries_server',
             output='screen',
-            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
+            parameters=[LaunchConfiguration('params_file')]
         ),
 
         # BT Navigator
@@ -102,7 +102,7 @@ def generate_launch_description():
             executable='bt_navigator',
             name='bt_navigator',
             output='screen',
-            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, 
+            parameters=[ 
                         {'default_bt_xml_filename': LaunchConfiguration('bt_xml_file')},
                         LaunchConfiguration('params_file')]
         ),
@@ -113,7 +113,7 @@ def generate_launch_description():
             executable='waypoint_follower',
             name='waypoint_follower',
             output='screen',
-            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
+            parameters=[LaunchConfiguration('params_file')]
         ),
 
         # Map Server
@@ -122,7 +122,7 @@ def generate_launch_description():
             executable='map_server',
             name='map_server',
             output='screen',
-            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, 
+            parameters=[ 
                         {'yaml_filename': LaunchConfiguration('map')},
                         LaunchConfiguration('params_file')]
         ),
