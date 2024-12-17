@@ -48,15 +48,16 @@ def generate_launch_description():
             executable='lifecycle_manager',
             name='lifecycle_manager_navigation',
             output='screen',
-            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, 
-                        {'autostart': True},
-                        {'node_names': ['controller_server', 
+            parameters={      
+                'autostart': True,
+                'use_sim_time': LaunchConfiguration('use_sim_time'),
+                'node_names': ['controller_server', 
                                         'planner_server', 
                                         'recoveries_server', 
                                         'bt_navigator', 
                                         'waypoint_follower', 
                                         'map_server', 
-                                        'amcl']}]
+                                        'amcl']}.items(),
         ),
         # AMCL node
         Node(
