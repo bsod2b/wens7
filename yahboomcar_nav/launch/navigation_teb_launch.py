@@ -101,7 +101,7 @@ def generate_launch_description():
             name='bt_navigator',
             output='screen',
             parameters=[LaunchConfiguration('params_file'),
-                        {'bt_xml_filename': LaunchConfiguration('bt_xml_file')},]
+                        {'default_bt_xml_filename': LaunchConfiguration('bt_xml_file')},]
         ),
 
         # Waypoint Follower
