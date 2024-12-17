@@ -79,13 +79,13 @@ def generate_launch_description():
         ),
 
         # Costmap converter
-        Node(
-            package='costmap_converter',
-            executable='costmap_converter',
-            name='costmap_converter',
-            output='screen',
-            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
-        ),
+        # Node(
+        #    package='costmap_converter',
+        #    executable='costmap_converter',
+        #    name='costmap_converter',
+        #    output='screen',
+        #    parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
+        #),
 
         # Global costmap
         Node(
