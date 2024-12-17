@@ -25,13 +25,14 @@ def generate_launch_description():
         'params',
         'behavior_tree.xml'
     ])
-
     
-
-    # Define all the nodes to be launched
-    nodes_to_launch = [
-        
-        # AMCL node
+    # Return the LaunchDescription object
+    return LaunchDescription([
+        use_sim_time,
+        map_yaml_path,
+        nav2_param_path,
+        bt_xml_path,
+         # AMCL node
         Node(
             package='nav2_amcl',
             executable='amcl',
@@ -137,15 +138,5 @@ def generate_launch_description():
             name='robot_state_publisher',
             output='screen',
             parameters=[nav2_param_path, {'use_sim_time': LaunchConfiguration('use_sim_time')}]
-        )
-    ]
-
-    
-    # Return the LaunchDescription object
-    return LaunchDescription([
-        use_sim_time,
-        map_yaml_path,
-        nav2_param_path,
-        bt_xml_path,
-        *nodes_to_launch
+        ),
     ])
