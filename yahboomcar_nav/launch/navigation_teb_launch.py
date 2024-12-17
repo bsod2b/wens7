@@ -100,7 +100,8 @@ def generate_launch_description():
             executable='bt_navigator',
             name='bt_navigator',
             output='screen',
-            parameters=[LaunchConfiguration('params_file')]
+            parameters=[LaunchConfiguration('params_file'),
+                        {'bt_xml_filename': LaunchConfiguration('bt_xml_file')},]
         ),
 
         # Waypoint Follower
@@ -118,8 +119,7 @@ def generate_launch_description():
             executable='map_server',
             name='map_server',
             output='screen',
-            parameters=[ 
-                        {'yaml_filename': LaunchConfiguration('map')},
-                        LaunchConfiguration('params_file')]
+            parameters=[LaunchConfiguration('params_file'),
+                        {'yaml_filename': LaunchConfiguration('map')},]
         ),
     ])
