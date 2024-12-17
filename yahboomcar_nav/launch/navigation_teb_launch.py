@@ -54,8 +54,7 @@ def generate_launch_description():
                 'node_names': ['controller_server', 
                                         'planner_server', 
                                         'recoveries_server', 
-                                        'bt_navigator', 
-                                        'waypoint_follower', 
+                                        'bt_navigator',
                                         'map_server', 
                                         'amcl']
             }],
@@ -102,9 +101,7 @@ def generate_launch_description():
             executable='bt_navigator',
             name='bt_navigator',
             output='screen',
-            parameters=[ 
-                        {'default_bt_xml_filename': LaunchConfiguration('bt_xml_file')},
-                        LaunchConfiguration('params_file')]
+            parameters=[LaunchConfiguration('params_file')]
         ),
 
         # Waypoint Follower
