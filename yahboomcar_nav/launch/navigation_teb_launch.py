@@ -43,6 +43,22 @@ def generate_launch_description():
         declare_nav2_param_path_arg,
         declare_bt_xml_path_arg,
         
+        Node(
+            package='nav2_lifecycle_manager',
+            executable='lifecycle_manager',
+            name='lifecycle_manager_navigation',
+            output='screen',
+            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, 
+                        {'autostart': True},
+                        {'node_names': ['controller_server', 
+                                        'planner_server', 
+                                        'recoveries_server', 
+                                        'bt_navigator', 
+                                        'waypoint_follower', 
+                                        'map_server', 
+                                        'map_saver', 
+                                        'amcl']}]
+        ),
         # AMCL node
         Node(
             package='nav2_amcl',
