@@ -52,11 +52,11 @@ def generate_launch_description():
                 'autostart': True,
                 'use_sim_time': LaunchConfiguration('use_sim_time'),
                 'node_names': ['controller_server', 
-                                        'planner_server', 
-                                        'recoveries_server', 
-                                        'bt_navigator',
-                                        'map_server', 
-                                        'amcl']
+                                'planner_server', 
+                                'recoveries_server', 
+                                'bt_navigator',
+                                'map_server', 
+                                'amcl']
             }],
         ),
         # AMCL node
@@ -64,15 +64,6 @@ def generate_launch_description():
             package='nav2_amcl',
             executable='amcl',
             name='amcl',
-            output='screen',
-            parameters=[LaunchConfiguration('params_file')]
-        ),
-
-        # Controller server
-        Node(
-            package='nav2_controller',
-            executable='controller_server',
-            name='controller_server',
             output='screen',
             parameters=[LaunchConfiguration('params_file')]
         ),
