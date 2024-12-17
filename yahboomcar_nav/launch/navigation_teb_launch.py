@@ -109,15 +109,6 @@ def generate_launch_description():
                         LaunchConfiguration('params_file')]
         ),
 
-        # Map Saver
-        Node(
-            package='nav2_map_server',
-            executable='map_saver',
-            name='map_saver',
-            output='screen',
-            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}, LaunchConfiguration('params_file')]
-        ),
-
         # Robot State Publisher
         Node(
             package='robot_state_publisher',
