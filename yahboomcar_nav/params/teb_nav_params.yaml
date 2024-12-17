@@ -54,6 +54,7 @@ bt_navigator:
     robot_base_frame: base_footprint
     odom_topic: /odom
     default_bt_xml_filename: $(find-pkg-share yahboomcar_nav)/params/navigate_w_replanning_and_recovery.xml
+    always_reload_bt_xml: True
     plugin_lib_names:
       - nav2_compute_path_to_pose_action_bt_node
       - nav2_follow_path_action_bt_node
