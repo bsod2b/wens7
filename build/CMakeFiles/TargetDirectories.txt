@@ -1,0 +1,10 @@
+/home/mkoscheck/WS24/wens7/build/CMakeFiles/install/strip.dir
+/home/mkoscheck/WS24/wens7/build/CMakeFiles/install/local.dir
+/home/mkoscheck/WS24/wens7/build/CMakeFiles/install.dir
+/home/mkoscheck/WS24/wens7/build/CMakeFiles/list_install_components.dir
+/home/mkoscheck/WS24/wens7/build/CMakeFiles/rebuild_cache.dir
+/home/mkoscheck/WS24/wens7/build/CMakeFiles/edit_cache.dir
+/home/mkoscheck/WS24/wens7/build/CMakeFiles/test.dir
+/home/mkoscheck/WS24/wens7/build/CMakeFiles/explore.dir
+/home/mkoscheck/WS24/wens7/build/CMakeFiles/explore_lite_uninstall.dir
+/home/mkoscheck/WS24/wens7/build/CMakeFiles/uninstall.dir

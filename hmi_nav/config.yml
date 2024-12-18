@@ -3,15 +3,69 @@ configs:
     x_data: 0.0
     y_data: 0.0
     yaw: 0.0
-  config1:
+  Room 101:
     x_data: 1.0
     y_data: 0.0
     yaw: 0.0
-  config2:
+  Room 102:
     x_data: 2.0
     y_data: 0.0
     yaw: 0.0
-  config4:
+  Room 103:
     x_data: 1.0
     y_data: -1.0
     yaw: 0.0
+  Room 104:
+    x_data: 2.0
+    y_data: -1.0
+    yaw: 0.0
+  Room 105:
+    x_data: 1.0
+    y_data: -2.0
+    yaw: 0.0
+  Room 106:
+    x_data: 2.0
+    y_data: -2.0
+    yaw: 0.0
+  Room 107:
+    x_data: 1.0
+    y_data: -3.0
+    yaw: 0.0
+  Room 108:
+    x_data: 2.0
+    y_data: -3.0
+    yaw: 0.0
+  Room 109:
+    x_data: 1.0
+    y_data: -4.0
+    yaw: 0.0
+  Room 110:
+    x_data: 2.0
+    y_data: -4.0
+    yaw: 0.0
+  Room 111:
+    x_data: 1.0
+    y_data: -5.0
+    yaw: 0.0
+  Room 112:
+    x_data: 2.0
+    y_data: -5.0
+    yaw: 0.0
+  Washing room:
+    x_data: 0.0
+    y_data: -5.0
+    yaw: 0.0
+  Elevator:
+    x_data: 0.0
+    y_data: -4.0
+    yaw: 0.0
+  Toilet:
+    x_data: 0.0
+    y_data: -3.0
+    yaw: 0.0
+  Stairs:
+    x_data: 0.0
+    y_data: -2.0
+    yaw: 0.0
+
+  

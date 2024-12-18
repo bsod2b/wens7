@@ -26,7 +26,7 @@ class TestPublisher(Node):
             msg.y_data = config['y_data']
             msg.yaw = config['yaw']
             self.pub_new_goal.publish(msg)
-            self.get_logger().info(f'Publishing: x={msg.x_data}, y={msg.y_data}, yaw={msg.yaw}')
+            self.get_logger().info(f'Publishing coordinates for {config_name}')
         else:
             self.get_logger().error(f"Config '{config_name}' not found in config.yaml")
 
