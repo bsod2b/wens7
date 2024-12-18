@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'testPublisher = hmi_nav.testPublisher:main',
+            'publisher = hmi_nav.publisher:main',
         ],
     },
 )
